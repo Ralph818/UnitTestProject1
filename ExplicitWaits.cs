@@ -29,6 +29,7 @@ namespace UnitTestProject1
             Thread.Sleep(3000);
             driver?.Quit();
         }
+  
         [TestMethod]
         public void ExplicitWait2()
         { 
