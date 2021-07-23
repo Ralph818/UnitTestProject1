@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -25,10 +26,10 @@ namespace UnitTestProject1.Interactions
         [SetUp]
         public void Setup()
         {
-            new DriverManager().SetUpDriver(new FirefoxConfig());
-            driver = new FirefoxDriver();
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            driver = new ChromeDriver();
             actions = new Actions(driver);
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(6));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
 
         [TearDown]
@@ -81,6 +82,21 @@ namespace UnitTestProject1.Interactions
 
         }
 
+        [Category("DragAndDrop")]
+        [Test]
+        public void DragDropQuiz()
+        {
+            driver.Navigate().GoToUrl("http://www.pureexample.com/jquery-ui/basic-droppable.html");
+            wait.Until(FrameToBeAvailableAndSwitchToIt(By.Id("ExampleFrame-94")));
+
+            IWebElement sourceElement = driver.FindElement(By.XPath("//*[@class='square ui-draggable']"));
+            IWebElement targetElement = driver.FindElement(By.XPath("//div[contains(text(),'Drop here')]"));
+
+            actions.DragAndDrop(sourceElement, targetElement).Perform();
+
+            Assert.AreEqual("dropped!", driver.FindElement(By.Id("info")).Text);
+            Thread.Sleep(3000);
+        }
 
     }
 }
