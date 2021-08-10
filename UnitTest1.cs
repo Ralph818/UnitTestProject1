@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Threading;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using static SeleniumExtras.WaitHelpers.ExpectedConditions;
+using OpenQA.Selenium.Interactions;
+
 
 namespace UnitTestProject1
 {
@@ -16,13 +19,16 @@ namespace UnitTestProject1
         public IWebDriver Driver { get; private set; }
         private WebDriverWait wait;
         private IWebElement element;
+        private Actions actions;
 
         [TestInitialize]
         public void GetChromeDriver()
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
             Driver = new ChromeDriver();
+            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
             Driver.Manage().Window.Maximize();
+            actions = new Actions(Driver);
         }
 
         [TestCleanup]
@@ -262,6 +268,32 @@ namespace UnitTestProject1
             IWebElement el1 = Driver.FindElement(By.XPath("//*[@id='button1']"));
             Assert.AreEqual(135, el1.Location.X);
             Assert.AreEqual(182, el1.Location.Y);
+        }
+
+        [TestMethod]
+        public void AutomationQuiz()
+        {
+            //navigate to ultimateqa.com
+            Driver.Navigate().GoToUrl("http://www.ultimateqa.com");
+            wait.Until(ElementExists(By.XPath("//img[@data-attachment-id='214976']")));
+            
+            //click on the search button
+            Driver.FindElement(By.XPath("//*[@class='et_pb_menu__icon et_pb_menu__search-button']")).Click();
+            wait.Until(ElementIsVisible(By.XPath("//*[@class='et_pb_menu__search-input']")));
+
+            //enter text to search
+            IWebElement searchBox = Driver.FindElement(By.XPath("//*[@class='et_pb_menu__search-input']"));
+            searchBox.SendKeys("complicated page");
+            searchBox.SendKeys(Keys.Enter);
+           
+            //wait and assert that the search worked
+            wait.Until(ElementToBeClickable(By.LinkText("Complicated Page")));
+            Assert.AreEqual("https://ultimateqa.com/?s=complicated+page", Driver.Url);
+
+            //click on the complicated page link and assert
+            Driver.FindElement(By.LinkText("Complicated Page")).Click();
+            wait.Until(ElementExists(By.ClassName("et_pb_menu__logo")));
+            Assert.AreEqual("https://ultimateqa.com/complicated-page/", Driver.Url);
         }
     }
 }

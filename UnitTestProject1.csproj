@@ -93,6 +93,10 @@
     <Compile Include="ExplicitWaits.cs" />
     <Compile Include="ImplicitWaits.cs" />
     <Compile Include="Interactions\InteractionsDemo.cs" />
+    <Compile Include="PageObjectExercise\AutomationQuiz.cs" />
+    <Compile Include="PageObjectExercise\PageObject.cs" />
+    <Compile Include="Tombola\PageTombola.cs" />
+    <Compile Include="Tombola\Tests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
