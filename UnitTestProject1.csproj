@@ -95,6 +95,17 @@
     <Compile Include="Interactions\InteractionsDemo.cs" />
     <Compile Include="PageObjectExercise\AutomationQuiz.cs" />
     <Compile Include="PageObjectExercise\PageObject.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
+    <Compile Include="Pages\ConfirmationPage.cs" />
+    <Compile Include="Tests\ContactData.cs" />
+    <Compile Include="Pages\ContactServicePage.cs" />
+    <Compile Include="Tests\ContactUsTests.cs" />
+    <Compile Include="Pages\MyStoreHomePage.cs" />
+    <Compile Include="Pages\ResultsPage.cs" />
+    <Compile Include="Tests\SearchFunctionality.cs" />
+    <Compile Include="Pages\Slider.cs" />
+    <Compile Include="Tests\SliderFeature.cs" />
     <Compile Include="Tombola\PageTombola.cs" />
     <Compile Include="Tombola\Tests.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -111,6 +122,13 @@
     <Content Include="geckodriver.exe" />
     <Content Include="Interactions\geckodriver.exe" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AutomationResources\AutomationResources.csproj">
+      <Project>{B762A2EF-FE22-4594-8381-0E99ABA50BE0}</Project>
+      <Name>AutomationResources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

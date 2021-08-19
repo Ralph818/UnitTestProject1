@@ -39,3 +39,5 @@ C:\Users\YamiletGIGA\source\repos\UnitTestProject1\bin\Debug\SeleniumExtras.Wait
 C:\Users\YamiletGIGA\source\repos\UnitTestProject1\bin\Debug\nunit.framework.dll
 C:\Users\YamiletGIGA\source\repos\UnitTestProject1\bin\Debug\nunit.framework.xml
 C:\Users\YamiletGIGA\source\repos\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.AssemblyReference.cache
+C:\Users\YamiletGIGA\source\repos\UnitTestProject1\bin\Debug\AutomationResources.dll
+C:\Users\YamiletGIGA\source\repos\UnitTestProject1\bin\Debug\AutomationResources.pdb
